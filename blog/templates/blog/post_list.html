@@ -7,7 +7,9 @@
             <time class="date">
                 {{ post.published_date }}
             </time>
-            <h2><a href="">{{ post.title }}</a></h2>
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <!-- La partie post_detail signifie que Django s'attend à trouver une URL en blog/urls.py avec nom = post_detail -->
+            <!-- pk=post.pk ? pk = « primary key », qui est un identifiant unique pour chaque entrée dans une base de données. Pas de clé primaire spécifiée dans notre modèle Post : Django en crée une pour nous (par défaut, un champ nommé « id » contenant un nombre qui augmente pour chaque entrée :1, 2, 3, etc.) et l’ajoute comme champ à chacun de nos posts. Nous accédons à la clé primaire en écrivant post.pk -->
             <p>{{ post.text|linebreaksbr }}</p>
             <!-- |linebreaksbr : filtre qui convertit automatiquement les fins de lignes en paragraphes. -->
         </article>
